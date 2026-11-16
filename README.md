@@ -35,7 +35,7 @@ and maximum drawdown. Each statistic is calculated from the individual seed's
 complete return path. The **Mean wealth curve** is the pointwise average of the
 three compounded excess-return indices; table statistics are averaged separately.
 The evaluation covers 3,772 trading sessions, January 2011–December 2025. Costs are
-1 basis point (bp) per unit of stock-level $L^1$ turnover and 0.1 bp per day per
+1 basis point (bp) per unit of stock-level $`L^1`$ turnover and 0.1 bp per day per
 unit of short exposure. Results before costs evaluate the same fitted models
 with both charges set to zero.
 
@@ -43,89 +43,89 @@ with both charges set to zero.
 
 ### 1. Excess returns and PCA residuals
 
-The model uses $N=500$ stocks, $K=5$ factors, and a signal lookback of $L=30$ days.
-At the close of day $t$, observe stock excess returns
-$R_t=R_t^{\mathrm{act}}-R_t^{\mathrm{rf}}\mathbf{1}\in\mathbb{R}^N$
-and choose weights $w_t$ for the next day's return $w_t^{\mathsf T}R_{t+1}$.
+The model uses $`N=500`$ stocks, $`K=5`$ factors, and a signal lookback of $`L=30`$ days.
+At the close of day $`t`$, observe stock excess returns
+$`R_t=R_t^{\mathrm{act}}-R_t^{\mathrm{rf}}\mathbf{1}\in\mathbb{R}^N`$
+and choose weights $`w_t`$ for the next day's return $`w_t^{\mathsf T}R_{t+1}`$.
 
-Let $Q_t\in\mathbb{R}^{N\times K}$ be the PCA factor portfolios and
-$B_t\in\mathbb{R}^{N\times K}$ their stock loadings. Define the residual map
+Let $`Q_t\in\mathbb{R}^{N\times K}`$ be the PCA factor portfolios and
+$`B_t\in\mathbb{R}^{N\times K}`$ their stock loadings. Define the residual map
 and each historical residual by
 
-$$
+```math
 \Phi_t=I_N-B_tQ_t^{\mathsf T},
 \qquad
 \varepsilon_s=\Phi_{s-1}R_s.
-$$
+```
 
-At close $t$, factors use the 252 returns ending at $t$; loadings use the last
+At close $`t`$, factors use the 252 returns ending at $`t`$; loadings use the last
 60 of those observations. Each historical residual uses its own preceding
 factor estimate. The signal input is a cumulative residual path:
 
-$$
+```math
 x_{n,t}^{(\ell)}=\sum_{j=1}^{\ell}\varepsilon_{n,t-L+j},
 \qquad \ell=1,\ldots,L.
-$$
+```
 
 ### 2. Signals, residual allocations, and stock weights
 
 The signal and allocation functions act on each stock's path, with parameters
 shared across stocks:
 
-$$
+```math
 z_{n,t}=f_\theta(x_{n,t}),
 \qquad u_{n,t}=g_\psi(z_{n,t}).
-$$
+```
 
-| Model | Signal $f_\theta$ | Allocation $g_\psi$ |
+| Model | Signal $`f_\theta`$ | Allocation $`g_\psi`$ |
 | --- | --- | --- |
-| CNN + Transformer | CNN $1\to8\to8$, then a four-head Transformer; final 8-dimensional token | Linear head $v^{\mathsf T}z+b$ |
-| Fourier + FFN | 30 real coordinates from the unnormalized real fast Fourier transform (FFT) | FFN $30\to16\to8\to4\to1$, with rectified linear unit (ReLU) hidden activations |
+| CNN + Transformer | CNN $`1\to8\to8`$, then a four-head Transformer; final 8-dimensional token | Linear head $`v^{\mathsf T}z+b`$ |
+| Fourier + FFN | 30 real coordinates from the unnormalized real fast Fourier transform (FFT) | FFN $`30\to16\to8\to4\to1`$, with rectified linear unit (ReLU) hidden activations |
 
-Residual allocations $u_t$ are converted into stock holdings by netting their
+Residual allocations $`u_t`$ are converted into stock holdings by netting their
 factor hedges, then normalizing total absolute exposure:
 
-$$
+```math
 \widetilde w_t=\Phi_t^{\mathsf T}u_t
              =u_t-Q_t(B_t^{\mathsf T}u_t),
 \qquad
 w_t=\frac{\widetilde w_t}{\lVert\widetilde w_t\rVert_1}.
-$$
+```
 
 Zero allocations correspond to a cash position. All other portfolios have
-$\lVert w_t\rVert_1=1$ and may contain both long and short positions.
+$`\lVert w_t\rVert_1=1`$ and may contain both long and short positions.
 
 ## Trading costs and the learning objective
 
 Cost-aware models incorporate the previous stock holding in the **final linear output layer**:
-$g_\psi(z,h)=g_\psi^{\mathrm{signal}}(z)+a h$, with $a$ initialized to zero.
-For lagged holdings $h_{t-1}$, net excess return is
+$`g_\psi(z,h)=g_\psi^{\mathrm{signal}}(z)+a h`$, with $`a`$ initialized to zero.
+For lagged holdings $`h_{t-1}`$, net excess return is
 
-$$
+```math
 \widetilde R^p_{t+1}
 =w_t^{\mathsf T}R_{t+1}
 -c_{\mathrm{tr}}\lVert w_t-h_{t-1}\rVert_1
 -c_{\mathrm{sh}}\lVert(-w_t)_+\rVert_1,
-$$
+```
 
-where $c_{\mathrm{tr}}=10^{-4}$ and $c_{\mathrm{sh}}=10^{-5}$; $(\cdot)_+$
+where $`c_{\mathrm{tr}}=10^{-4}`$ and $`c_{\mathrm{sh}}=10^{-5}`$; $`(\cdot)_+`$
 takes the positive part componentwise. At test time,
-$h_{t-1}=w_{t-1}^{\mathrm{deployed}}$.
+$`h_{t-1}=w_{t-1}^{\mathrm{deployed}}`$.
 
-For a minibatch $\mathcal B$, training minimizes the negative daily Sharpe ratio:
+For a minibatch $`\mathcal B`$, training minimizes the negative daily Sharpe ratio:
 
-$$
+```math
 \mathcal L_{\mathcal B}(\Theta)
-=-\frac{\operatorname{mean}_{\mathcal B}(\widetilde R^p)}
-{\max\!\left\{\operatorname{sd}_{\mathcal B}(\widetilde R^p),10^{-8}\right\}},
+=-\frac{\mathrm{mean}_{\mathcal B}(\widetilde R^p)}
+{\max\!\left\{\mathrm{sd}_{\mathcal B}(\widetilde R^p),10^{-8}\right\}},
 \qquad \Theta=(\theta,\psi).
-$$
+```
 
 Standard deviation uses the sample convention. The reported Sharpe ratio multiplies the
-unfloored mean/standard-deviation ratio by $\sqrt{252}$. Signal-only training
+unfloored mean/standard-deviation ratio by $`\sqrt{252}`$. Signal-only training
 omits the holdings input and sets both costs to zero. All models use adaptive
-moment estimation (Adam) with learning rate $10^{-3}$, minibatches of up to 125
-days, dropout $0.25$, and 100 epochs.
+moment estimation (Adam) with learning rate $`10^{-3}`$, minibatches of up to 125
+days, dropout $`0.25`$, and 100 epochs.
 
 ## Extensions
 
@@ -134,12 +134,12 @@ days, dropout $0.25$, and 100 epochs.
 Neural models are refitted every 125 trading days. Each refit has a 1,000-day
 historical window: 30 context days and 970 outcomes.
 The validation branch splits the latter into 720 training and 250 validation
-outcomes. For refit $b$, choose
+outcomes. For refit $`b`$, choose
 
-$$
-e_b^*=\operatorname*{arg\,max}_{e\in\{1,\ldots,100\}}
+```math
+e_b^*=\underset{e\in\{1,\ldots,100\}}{\arg\max}
 \widehat{\mathrm{SR}}_{\mathrm{net,val}}(\Theta_{b,e}),
-$$
+```
 
 using the earliest epoch in an exact tie. Selection always uses the net Sharpe
 ratio at the common cost rates, including for signal-only models.
@@ -147,9 +147,9 @@ ratio at the common cost rates, including for signal-only models.
 | Checkpoint policy | Training outcomes | Deployed epoch |
 | --- | ---: | --- |
 | Full data, epoch 100 | 970 | 100 |
-| Full data, initial-selected | 970 | $e_0^*$ from the first validation fit, fixed across refits |
+| Full data, initial-selected | 970 | $`e_0^*`$ from the first validation fit, fixed across refits |
 | Short window, epoch 100 | 720 | 100; control for the shorter training sample |
-| Rolling-selected | 720 | $e_b^*$ from each refit's following 250-day validation window |
+| Rolling-selected | 720 | $`e_b^*`$ from each refit's following 250-day validation window |
 
 The initial selection is specific to architecture, method, and seed. Rolling
 selection directly deploys the model trained on 720 outcomes. Each validation
@@ -158,15 +158,15 @@ reinitialized at each refit.
 
 ### 2. Current holdings and sequential gradients
 
-Let $\operatorname{sg}$ retain a value while stopping its gradient, and let $e$
+Let $`\mathrm{sg}`$ retain a value while stopping its gradient, and let $`e`$
 denote the training epoch. We compare:
 
 | Training method | Holdings supplied to the head and costs | Objective |
 | --- | --- | --- |
 | Signal only | No holdings input | Gross Sharpe |
-| Previous epoch (paper method) | $h_{t-1}=\operatorname{sg}(w_{t-1}^{(e-1)})$, frozen throughout epoch $e$ | Net Sharpe |
-| Current, stopped gradients | $h_{t-1}=\operatorname{sg}(w_{t-1})$ from the current rollout | Net Sharpe |
-| Current, full gradients | $h_{t-1}=w_{t-1}$ from the current rollout | Net Sharpe |
+| Previous epoch (paper method) | $`h_{t-1}=\mathrm{sg}(w_{t-1}^{(e-1)})`$, frozen throughout epoch $`e`$ | Net Sharpe |
+| Current, stopped gradients | $`h_{t-1}=\mathrm{sg}(w_{t-1})`$ from the current rollout | Net Sharpe |
+| Current, full gradients | $`h_{t-1}=w_{t-1}`$ from the current rollout | Net Sharpe |
 
 Previous-epoch holdings are obtained from a trajectory evaluated with dropout
 disabled and recomputed after each epoch; the first epoch uses zero holdings.
@@ -176,7 +176,7 @@ at each epoch.
 For current holdings, the return gradient separates into a direct effect and
 an effect through earlier decisions:
 
-$$
+```math
 \begin{aligned}
 \frac{d\widetilde R^p_{t+1}}{d\Theta}
 &=\underbrace{
@@ -190,7 +190,7 @@ $$
 \right)\frac{dw_{t-1}}{d\Theta}
 }_{\text{history path: removed by stop-gradient}}.
 \end{aligned}
-$$
+```
 
 The history term captures both the allocation's response to previous holdings
 and their direct effect on turnover costs. Under full-gradient training,
@@ -281,10 +281,10 @@ use 64-bit arithmetic (FP64). Automatic mixed precision (AMP) and TensorFloat-32
 
 | File | Purpose |
 | --- | --- |
-| `src/dlsa/data.py` | Returns $R$, PCA maps $(B,Q)$, residual paths $x$ |
-| `src/dlsa/models.py` | Signal/allocation functions $(f_\theta,g_\psi)$ for CNN + Transformer and Fourier FFN |
+| `src/dlsa/data.py` | Returns $`R`$, PCA maps $`(B,Q)`$, residual paths $`x`$ |
+| `src/dlsa/models.py` | Signal/allocation functions $`(f_\theta,g_\psi)`$ for CNN + Transformer and Fourier FFN |
 | `src/dlsa/train.py` | Minibatch Sharpe loss, holdings gradients, and epoch selection |
-| `src/dlsa/backtest.py` | Deployed weights $w_t$, turnover, and net returns $\widetilde R^p$ |
+| `src/dlsa/backtest.py` | Deployed weights $`w_t`$, turnover, and net returns $`\widetilde R^p`$ |
 | `src/dlsa/plots.py` | Performance comparisons, training grids, and diagnostics |
 | `src/dlsa/config.py`, `src/dlsa/__main__.py` | Fixed experiment settings and commands |
 
