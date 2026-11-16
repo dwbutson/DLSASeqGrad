@@ -1,0 +1,218 @@
+[
+  {
+    "seed": 0,
+    "architecture": "fourier",
+    "arm": "signal_only",
+    "epoch": 36,
+    "validation_sharpe": 1.5915026280359512,
+    "source_sha256": "251272627d831cdc4d1b8100ed0d4cd2e5fa607efcfaf31ca3aa6ba579c1305b",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 0,
+    "architecture": "fourier",
+    "arm": "previous_epoch",
+    "epoch": 48,
+    "validation_sharpe": 1.6991589283714603,
+    "source_sha256": "80d9856b6a895b4ce4f70734879b6fc03838b05302491535c47fa6cc53bc5132",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 0,
+    "architecture": "fourier",
+    "arm": "current_detached",
+    "epoch": 48,
+    "validation_sharpe": 1.7132748134528735,
+    "source_sha256": "e568502a1d675e6aadac69ee20b18da8cde3181aa1aef2d696f7077cc1b4b283",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 0,
+    "architecture": "fourier",
+    "arm": "current_recurrent",
+    "epoch": 72,
+    "validation_sharpe": 1.7005481558890123,
+    "source_sha256": "eb556cd1ed1d54b4655688f359736518b8750ca50d33a028f108845537abbf78",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 0,
+    "architecture": "cnn",
+    "arm": "signal_only",
+    "epoch": 43,
+    "validation_sharpe": 4.295793453132813,
+    "source_sha256": "eadc493072ae67ee7ddab3f470cb38f2eb2052b9d06a3d87038aea4e0b1b0001",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 0,
+    "architecture": "cnn",
+    "arm": "previous_epoch",
+    "epoch": 76,
+    "validation_sharpe": 4.515643620221575,
+    "source_sha256": "b3a60067d149be2619792288e3b99420b7ad8fd8ccb9a61219b8aa7e2174fbaa",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 0,
+    "architecture": "cnn",
+    "arm": "current_detached",
+    "epoch": 63,
+    "validation_sharpe": 4.463130321305181,
+    "source_sha256": "875b56ee32158a165a018c278094731885e3caaded603a65a19ad1d4f7eb9e44",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 0,
+    "architecture": "cnn",
+    "arm": "current_recurrent",
+    "epoch": 68,
+    "validation_sharpe": 4.565321605276108,
+    "source_sha256": "42c7ac16e22e1acb87d6db07eb1b19b59e12cf4f9bba02152cb849b8b3c11241",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "fourier",
+    "arm": "signal_only",
+    "epoch": 71,
+    "validation_sharpe": 1.971482960769276,
+    "source_sha256": "b041463cb3ff29027e90cf9a7ba6fc5d4bf1236de71e3a944b16dbe67e0f58c5",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "fourier",
+    "arm": "previous_epoch",
+    "epoch": 71,
+    "validation_sharpe": 1.0637081738475307,
+    "source_sha256": "f30b7aaa63564eb7e10b3e0578f891e3c13dcd31d28cafeec26d848ce3ead1e3",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "fourier",
+    "arm": "current_detached",
+    "epoch": 70,
+    "validation_sharpe": 1.4016752413017237,
+    "source_sha256": "acb7e527deecc206177e5f77a6a0ee1218d35356cb31565121ba893ab41114c7",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "fourier",
+    "arm": "current_recurrent",
+    "epoch": 94,
+    "validation_sharpe": 0.7466330871219877,
+    "source_sha256": "596a338182fb5d579974ea49e7f1de1a91d61976705d14c08d84f55b158a4dbb",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "cnn",
+    "arm": "signal_only",
+    "epoch": 21,
+    "validation_sharpe": 3.953208793635614,
+    "source_sha256": "5f1896a0a647f21cc0dadf535b5bd02d9ea6d18c4f39a8b8deab1617666b6d0d",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "cnn",
+    "arm": "previous_epoch",
+    "epoch": 34,
+    "validation_sharpe": 4.336513848632509,
+    "source_sha256": "233e93260c9631b59d8b4a2197340e95c402e7e13f63f5457a02693c7e051259",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "cnn",
+    "arm": "current_detached",
+    "epoch": 35,
+    "validation_sharpe": 4.273967638669434,
+    "source_sha256": "403b720218e9a42e538eb2a9392df52f52871d667a8b823633961d5d52f593fd",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 1,
+    "architecture": "cnn",
+    "arm": "current_recurrent",
+    "epoch": 35,
+    "validation_sharpe": 4.2750903416969885,
+    "source_sha256": "762bacebba755fd782769a79e0c3272cecb2f46fd481c0465a8241f89f72c92e",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "fourier",
+    "arm": "signal_only",
+    "epoch": 55,
+    "validation_sharpe": 1.4873685417205358,
+    "source_sha256": "148d5214ccbbd42bc98ff3d0536fee58d5daa80dadbf136461ace9a86e6a828e",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "fourier",
+    "arm": "previous_epoch",
+    "epoch": 52,
+    "validation_sharpe": 1.2909418084612694,
+    "source_sha256": "9864c2fcc78d1a2927676b193eb1557cf892ae1711704aac6f24c330eff7b841",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "fourier",
+    "arm": "current_detached",
+    "epoch": 51,
+    "validation_sharpe": 1.3554064464290114,
+    "source_sha256": "99a47cb7b9141a082e2255e9313b41a81f613c6c9a70580879a98a9ec6873e10",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "fourier",
+    "arm": "current_recurrent",
+    "epoch": 69,
+    "validation_sharpe": 1.2471531022896878,
+    "source_sha256": "b80c5f463584e26430b0d9da999800d2e5c0625e747b60c7031e3f8922a3fd3f",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "cnn",
+    "arm": "signal_only",
+    "epoch": 35,
+    "validation_sharpe": 3.826716876052493,
+    "source_sha256": "78a5800805ec8b42e71fd096bf086d72156c96af3b703032c0cbab8399ee3377",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "cnn",
+    "arm": "previous_epoch",
+    "epoch": 32,
+    "validation_sharpe": 4.499679777859024,
+    "source_sha256": "77cda9e0439f77f84fcd1cfb09874ec621b9470401988d359aaf66880482ad27",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "cnn",
+    "arm": "current_detached",
+    "epoch": 31,
+    "validation_sharpe": 4.382654581403707,
+    "source_sha256": "0dbc5f01348222ef61734ffed5ccc6bcb8b3d99791531b5a7bc5f3bcfe66219d",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  },
+  {
+    "seed": 2,
+    "architecture": "cnn",
+    "arm": "current_recurrent",
+    "epoch": 46,
+    "validation_sharpe": 4.609748467672419,
+    "source_sha256": "c7888243cfc938cf86e49241d2c89d3bcccbad37f1ee234146d1c4b26ac23de1",
+    "criterion": "best finite initial validation net Sharpe; earliest exact tie; fixed across 31 refits"
+  }
+]

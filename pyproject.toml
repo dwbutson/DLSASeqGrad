@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dlsaseqgrad"
+version = "0.1.0"
+description = "Cost-aware deep learning statistical arbitrage: results and a compact reproduction pipeline"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+dependencies = [
+    "numpy==2.5.1",
+    "scipy==1.18.0",
+    "matplotlib==3.11.0",
+    "torch>=2.8",
+]
+
+[project.optional-dependencies]
+fourier = ["torch==2.13.0"]
+cnn = ["torch==2.8.0"]
+
+[project.scripts]
+dlsa = "dlsa.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

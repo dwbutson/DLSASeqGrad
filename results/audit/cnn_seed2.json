@@ -1,0 +1,92 @@
+{
+  "passed": false,
+  "seed": 2,
+  "blocks": 496,
+  "limits": {
+    "double_rtol": 1e-10,
+    "double_atol": 1e-11,
+    "fp32_relative_l2": 0.0002,
+    "fp32_max_atol": 2e-05,
+    "fp32_max_rms_rtol": 0.0002,
+    "weight_max_abs": 1e-05,
+    "weight_l1": 0.0001,
+    "daily_net_abs": 1e-06
+  },
+  "maxima": {
+    "cpu_gpu_double_max_abs": 5.359601651377943e-14,
+    "fp32_double_max_abs": 0.0001716087305833891,
+    "fp32_double_relative_l2": 1.549470249497985e-05,
+    "precision_weight_max_abs": 1.0177102186341956e-06,
+    "precision_weight_l1": 4.183482007008251e-06,
+    "precision_daily_net_abs": 1.686185540847318e-08,
+    "max_weight_error": 0.0,
+    "max_factor_exposure": 1.028975624324524e-17
+  },
+  "version": "fp64_cross_backend_and_portfolio_v1",
+  "source_sha256": "359691ca86a2981b0f18343dbd4a08adf762d124ad27fdcc4cd356647ad461b2",
+  "diagnostic_collector_sha256": "33767ec95abd112d7665d2a30ea17ace0d5d0909dec18dd53a8706cd30079c51",
+  "failed_blocks": 1,
+  "failures": [
+    {
+      "path": "cnn/policies/current_detached/rolling_selected/blocks/block_01.json",
+      "verification": {
+        "passed": false,
+        "replay_audit_version": "fp64_cross_backend_and_portfolio_v1",
+        "audit_source_sha256": "359691ca86a2981b0f18343dbd4a08adf762d124ad27fdcc4cd356647ad461b2",
+        "max_weight_error": 0.0,
+        "max_factor_exposure": 8.538092108323347e-19,
+        "cpu_gpu_double_max_abs": 2.0483614804334138e-14,
+        "fp32_double_max_abs": 0.0001716087305833891,
+        "fp32_double_relative_l2": 1.549470249497985e-05,
+        "precision_weight_max_abs": 1.0177102186341956e-06,
+        "precision_weight_l1": 3.4142583166371747e-06,
+        "precision_daily_net_abs": 6.05175691501046e-09,
+        "original_elementwise_mismatches": 1,
+        "neural_check": "FAILED original precision bound; all unchanged bounds measured; strict FP64, recurrence and accounting checks passed",
+        "original_bound_checks": [
+          {
+            "name": "FP32 norm error",
+            "passed": true,
+            "measurements": "('FP32 norm error', array([1.79523036e-06, 1.66368120e-06, 1.54947025e-05]))"
+          },
+          {
+            "name": "FP32 max error",
+            "passed": false,
+            "measurements": "('FP32 max error', array([1.34517955e-05, 1.00856055e-05, 1.71608731e-04]), array([0.47461263, 0.48688213, 0.4969801 ]))"
+          },
+          {
+            "name": "Portfolio precision error",
+            "passed": true,
+            "measurements": "('Portfolio precision error', 1.0177102186341956e-06, 3.4142583166371747e-06)"
+          },
+          {
+            "name": "Daily PnL precision error",
+            "passed": true,
+            "measurements": "('Daily PnL precision error', 6.05175691501046e-09)"
+          }
+        ],
+        "fp32_max_error_by_sample": [
+          1.3451795499108687e-05,
+          1.0085605462339942e-05,
+          0.0001716087305833891
+        ],
+        "fp32_max_bound_by_sample": [
+          0.0001149225259434412,
+          0.00011737642663847643,
+          0.00011939602076091394
+        ],
+        "fp32_relative_l2_by_sample": [
+          1.795230358271539e-06,
+          1.6636812030384555e-06,
+          1.549470249497985e-05
+        ],
+        "diagnostic_collector_sha256": "33767ec95abd112d7665d2a30ea17ace0d5d0909dec18dd53a8706cd30079c51",
+        "strict_accounting_and_recurrence_passed": true,
+        "original_assertion": "AssertionError(('FP32 max error', array([1.34517955e-05, 1.00856055e-05, 1.71608731e-04]), array([0.47461263, 0.48688213, 0.4969801 ])))"
+      }
+    }
+  ],
+  "original_elementwise_mismatches": 10,
+  "strict_fp64_cross_backend_recurrence_accounting_passed": true,
+  "bounds_unchanged": true
+}

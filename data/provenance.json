@@ -1,0 +1,119 @@
+{
+  "source_panel": "data/pca500_survivors_20261106/panel.npz",
+  "source_panel_sha256": "94a16a204f9c28e6c73aeca215fbe9693c6a2ba1cd3f06c07fc8ce8cf12886f3",
+  "fields": {
+    "r": "Daily adjusted-close stock returns, decimal units; rows=date, columns=security",
+    "rf": "Daily risk-free returns, decimal units",
+    "dates": "Trading dates in source order",
+    "security_ids": "Stable local security identifiers, in stock-column order",
+    "symbols": "Source vendor tickers, in stock-column order"
+  },
+  "rows": 5094,
+  "stocks": 500,
+  "date_first": "2005-10-03",
+  "date_last": "2025-12-31",
+  "excess_returns": "x = r - rf[:, None]; verified byte-identical to the original x",
+  "first_return_row": "Undefined because the price panel has no preceding close; not used in PCA/training",
+  "preparation_offset": 322,
+  "split_indices": "Zero-based indices into the full returns.npz date axis; stop is exclusive",
+  "data_audit": {
+    "candidates": 1005,
+    "eligible": 527,
+    "pending": 0,
+    "exclusion_reasons": {
+      "Class C first traded in 2014; vendor back-extension is not that share class.": 1,
+      "NYSE ordinary shares first listed 2024-01-29; earlier vendor history is not the required long US exchange-listed share history. SEC 2024 exhibit 99.1.": 1,
+      "Post-2013 American Airlines security; vendor older US Airways lineage requires additional merger accounting.": 1,
+      "insufficient_or_incomplete_full_period_history": 362,
+      "unresolved_action_adjustment_or_distribution": 96,
+      "vendor_unavailable": 17
+    },
+    "audit_seconds": 12.234705599956214,
+    "strategy_returns_examined": false,
+    "execution_permitted": true,
+    "selected": 500,
+    "unique_issuer_keys": 499,
+    "cik_mapped": 321,
+    "identity_limit": "Local stable security IDs; issuer keys without CIK are name-based. Provider historical lineage, not a certified point-in-time security master.",
+    "selected_last_candidate_rank": 905,
+    "panel_sha256": "94a16a204f9c28e6c73aeca215fbe9693c6a2ba1cd3f06c07fc8ce8cf12886f3",
+    "selected_sha256": "588998722dbb64a89025fe21256244fd507c03848f83d42ea81a4e8ace3a89db",
+    "completed_utc": "2026-11-07T01:39:47.857251+00:00",
+    "survivorship_bias": "Survival and data availability through Nov 2026; current capitalization-weight preference; future complete-history selection. Not historical top-500 or survivorship-free.",
+    "return_convention": "Yahoo adjusted-close ratios, with action/identity audit and no clipping; unexplained corporate-action discontinuities excluded before strategy fitting. Report backward dividend-adjustment convention.",
+    "inherited_source_uncertainty": "Single-vendor revised histories; internally reconciled action data do not guarantee externally perfect total returns.",
+    "headline_sessions": 3772,
+    "stock_count_each_headline_date": 500,
+    "missing_headline_payoffs": 0
+  },
+  "original_configuration": {
+    "study": "pca500_survivors_20261106",
+    "specified_at": "2026-11-07T01:28:48.527696+00:00",
+    "input_spec_sha256": "3c636af7b0e2272168579f4cd775e05a541d9147aff4a6493302024fb66fc570",
+    "universe": "fixed_500_current_US_long_history_survivors",
+    "universe_policy": "Current IWB equity holdings, USD, United States, ordinary/common shares (REIT common allowed); rank unrounded fund market value descending, ticker ascending for ties; take first 500 passing integrity review.",
+    "price_start": "2005-10-01",
+    "price_end_exclusive": "2026-01-01",
+    "test_first_calendar": "2011-01-01",
+    "test_last_calendar": "2025-12-31",
+    "factors": 5,
+    "pca_history": 252,
+    "loading_history": 60,
+    "lookback": 30,
+    "envelope": 1000,
+    "step": 125,
+    "seed": 0,
+    "epochs": 100,
+    "batch_size": 125,
+    "learning_rate": 0.001,
+    "dropout": 0.25,
+    "architecture": [
+      30,
+      16,
+      8,
+      4,
+      1
+    ],
+    "optimization": "negative daily sample Sharpe",
+    "loss_volatility_floor": 1e-08,
+    "training_costs": [
+      0.0,
+      0.0
+    ],
+    "evaluation_costs": [
+      0.0005,
+      0.0001
+    ],
+    "ou_signal_threshold": 1.25,
+    "ou_r2_threshold": 0.25,
+    "ou_innovation_ddof": 1,
+    "threads": 4,
+    "minimum_pca_stocks": 450,
+    "maximum_fraction_test_below_minimum": 0.05,
+    "timing": "stylized decision/execution close t-1, total return ending close t",
+    "final_liquidation": "separate sensitivity only",
+    "missing_payoff": "stop affected series; never zero-fill or exclude retrospectively",
+    "diagnostic": "first 750 envelope rows: 30 context + 720 outcomes; next 250 validation; no selection",
+    "revisions": {
+      "fja": {
+        "repository": "fja05680/sp500",
+        "revision": "a2430f2af0c79ddf0748e91de11bdeb1616ab5a7"
+      },
+      "chino": {
+        "repository": "chinobing/historical_sp500_constituents",
+        "revision": "40bb0fc26b0426e8c29c988701b99ba6a2db3d12"
+      }
+    },
+    "user_scope_revision": "Option 1 explicitly authorized: fixed 500 long-history survivors; retain 2011-2025 and original strategy settings.",
+    "fallback_pool": "If fewer than 500 pass IWB, append current IWV eligible common equities in decreasing fund market value, skipping duplicates. No strategy performance observed.",
+    "history_requirement": "Complete daily usable prices from 2005-10-03 through 2025-12-31, including all exchange sessions; no imputed returns.",
+    "selection_bias": "Survival and data availability through Nov 2026; current capitalization-weight preference; future complete-history selection. Not historical top-500 or survivorship-free.",
+    "return_convention": "Yahoo adjusted-close ratios, with action/identity audit and no clipping; unexplained corporate-action discontinuities excluded before strategy fitting. Report backward dividend-adjustment convention.",
+    "quality_rule": "Missing/nonpositive/nonfinite quotes or invalid issuer/class lineage fail; extreme moves prompt evidence review, never automatic magnitude-based deletion; unresolved action-adjustment defects fail the security, not individual dates.",
+    "price_extreme_review_threshold": 0.3,
+    "dividend_adjustment_ratio_tolerance": 5e-05,
+    "holdings_url": "https://www.ishares.com/us/products/239707/ishares-russell-1000-etf/latest-holdings.csv",
+    "monthly_refresh": false,
+    "exact_fixed_stock_count": 500
+  }
+}

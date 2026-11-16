@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "blocks": 496,
+  "limits": {
+    "double_rtol": 1e-10,
+    "double_atol": 1e-11,
+    "fp32_relative_l2": 0.0002,
+    "fp32_max_atol": 2e-05,
+    "fp32_max_rms_rtol": 0.0002,
+    "weight_max_abs": 1e-05,
+    "weight_l1": 0.0001,
+    "daily_net_abs": 1e-06
+  },
+  "maxima": {
+    "cpu_gpu_double_max_abs": 4.263256414560601e-14,
+    "fp32_double_max_abs": 4.126519628377956e-05,
+    "fp32_double_relative_l2": 8.664205539938827e-06,
+    "precision_weight_max_abs": 4.586269846144561e-07,
+    "precision_weight_l1": 5.987416949083114e-06,
+    "precision_daily_net_abs": 1.6041176153017145e-08,
+    "max_weight_error": 0.0,
+    "max_factor_exposure": 7.302826903650959e-18
+  },
+  "original_elementwise_mismatches": 2,
+  "version": "fp64_cross_backend_and_portfolio_v1",
+  "source_sha256": "c610e3eea7755ab432b45bfcd9f12ab2127305d68c4b3c01c91986fc45961d5e"
+}

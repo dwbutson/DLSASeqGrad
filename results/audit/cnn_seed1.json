@@ -1,0 +1,150 @@
+{
+  "passed": false,
+  "seed": 1,
+  "blocks": 496,
+  "limits": {
+    "double_rtol": 1e-10,
+    "double_atol": 1e-11,
+    "fp32_relative_l2": 0.0002,
+    "fp32_max_atol": 2e-05,
+    "fp32_max_rms_rtol": 0.0002,
+    "weight_max_abs": 1e-05,
+    "weight_l1": 0.0001,
+    "daily_net_abs": 1e-06
+  },
+  "maxima": {
+    "cpu_gpu_double_max_abs": 9.880984919163893e-14,
+    "fp32_double_max_abs": 0.00021123273942991183,
+    "fp32_double_relative_l2": 2.5782569273922172e-05,
+    "precision_weight_max_abs": 1.5238250458847122e-06,
+    "precision_weight_l1": 5.127477299618537e-06,
+    "precision_daily_net_abs": 2.0516228798630153e-08,
+    "max_weight_error": 0.0,
+    "max_factor_exposure": 9.451193625463483e-18
+  },
+  "version": "fp64_cross_backend_and_portfolio_v1",
+  "source_sha256": "359691ca86a2981b0f18343dbd4a08adf762d124ad27fdcc4cd356647ad461b2",
+  "diagnostic_collector_sha256": "33767ec95abd112d7665d2a30ea17ace0d5d0909dec18dd53a8706cd30079c51",
+  "failed_blocks": 2,
+  "failures": [
+    {
+      "path": "cnn/policies/previous_epoch/rolling_epoch100/blocks/block_15.json",
+      "verification": {
+        "passed": false,
+        "replay_audit_version": "fp64_cross_backend_and_portfolio_v1",
+        "audit_source_sha256": "359691ca86a2981b0f18343dbd4a08adf762d124ad27fdcc4cd356647ad461b2",
+        "max_weight_error": 0.0,
+        "max_factor_exposure": 1.0384623933337722e-18,
+        "cpu_gpu_double_max_abs": 5.3290705182007514e-14,
+        "fp32_double_max_abs": 0.00021123273942991183,
+        "fp32_double_relative_l2": 2.5782569273922172e-05,
+        "precision_weight_max_abs": 1.5238250458847122e-06,
+        "precision_weight_l1": 4.9744726646337445e-06,
+        "precision_daily_net_abs": 6.192139362240848e-09,
+        "original_elementwise_mismatches": 1,
+        "neural_check": "FAILED original precision bound; all unchanged bounds measured; strict FP64, recurrence and accounting checks passed",
+        "original_bound_checks": [
+          {
+            "name": "FP32 norm error",
+            "passed": true,
+            "measurements": "('FP32 norm error', array([2.16526967e-06, 2.11905544e-06, 2.57825693e-05]))"
+          },
+          {
+            "name": "FP32 max error",
+            "passed": false,
+            "measurements": "('FP32 max error', array([1.21688578e-05, 7.38631003e-06, 2.11232739e-04]), array([0.36614033, 0.38303811, 0.36982803]))"
+          },
+          {
+            "name": "Portfolio precision error",
+            "passed": true,
+            "measurements": "('Portfolio precision error', 1.5238250458847122e-06, 4.9744726646337445e-06)"
+          },
+          {
+            "name": "Daily PnL precision error",
+            "passed": true,
+            "measurements": "('Daily PnL precision error', 6.192139362240848e-09)"
+          }
+        ],
+        "fp32_max_error_by_sample": [
+          1.2168857842276282e-05,
+          7.386310029888765e-06,
+          0.00021123273942991183
+        ],
+        "fp32_max_bound_by_sample": [
+          9.322806563040821e-05,
+          9.660762187753191e-05,
+          9.396560531554916e-05
+        ],
+        "fp32_relative_l2_by_sample": [
+          2.165269671019585e-06,
+          2.119055442086111e-06,
+          2.5782569273922172e-05
+        ],
+        "diagnostic_collector_sha256": "33767ec95abd112d7665d2a30ea17ace0d5d0909dec18dd53a8706cd30079c51",
+        "strict_accounting_and_recurrence_passed": true,
+        "original_assertion": "AssertionError(('FP32 max error', array([1.21688578e-05, 7.38631003e-06, 2.11232739e-04]), array([0.36614033, 0.38303811, 0.36982803])))"
+      }
+    },
+    {
+      "path": "cnn/policies/signal_only/full_epoch100/blocks/block_30.json",
+      "verification": {
+        "passed": false,
+        "replay_audit_version": "fp64_cross_backend_and_portfolio_v1",
+        "audit_source_sha256": "359691ca86a2981b0f18343dbd4a08adf762d124ad27fdcc4cd356647ad461b2",
+        "max_weight_error": 0.0,
+        "max_factor_exposure": 1.3531351332387448e-18,
+        "cpu_gpu_double_max_abs": 1.3988810110276972e-14,
+        "fp32_double_max_abs": 8.918215445641309e-05,
+        "fp32_double_relative_l2": 1.2612460268174257e-05,
+        "precision_weight_max_abs": 8.132629710135703e-07,
+        "precision_weight_l1": 5.127477299618537e-06,
+        "precision_daily_net_abs": 2.0516228798630153e-08,
+        "original_elementwise_mismatches": 0,
+        "neural_check": "FAILED original precision bound; all unchanged bounds measured; strict FP64, recurrence and accounting checks passed",
+        "original_bound_checks": [
+          {
+            "name": "FP32 norm error",
+            "passed": true,
+            "measurements": "('FP32 norm error', array([1.26124603e-05, 4.48516134e-06, 3.71535823e-06]))"
+          },
+          {
+            "name": "FP32 max error",
+            "passed": false,
+            "measurements": "('FP32 max error', array([8.91821545e-05, 2.84901166e-05, 2.40694831e-05]), array([0.34104563, 0.36579058, 0.37654333]))"
+          },
+          {
+            "name": "Portfolio precision error",
+            "passed": true,
+            "measurements": "('Portfolio precision error', 8.132629710135703e-07, 5.127477299618537e-06)"
+          },
+          {
+            "name": "Daily PnL precision error",
+            "passed": true,
+            "measurements": "('Daily PnL precision error', 2.0516228798630153e-08)"
+          }
+        ],
+        "fp32_max_error_by_sample": [
+          8.918215445641309e-05,
+          2.8490116627644113e-05,
+          2.4069483111732737e-05
+        ],
+        "fp32_max_bound_by_sample": [
+          8.820912547101096e-05,
+          9.315811578655895e-05,
+          9.530866623150948e-05
+        ],
+        "fp32_relative_l2_by_sample": [
+          1.2612460268174257e-05,
+          4.485161344357223e-06,
+          3.7153582340695477e-06
+        ],
+        "diagnostic_collector_sha256": "33767ec95abd112d7665d2a30ea17ace0d5d0909dec18dd53a8706cd30079c51",
+        "strict_accounting_and_recurrence_passed": true,
+        "original_assertion": "AssertionError(('FP32 max error', array([8.91821545e-05, 2.84901166e-05, 2.40694831e-05]), array([0.34104563, 0.36579058, 0.37654333])))"
+      }
+    }
+  ],
+  "original_elementwise_mismatches": 7,
+  "strict_fp64_cross_backend_recurrence_accounting_passed": true,
+  "bounds_unchanged": true
+}

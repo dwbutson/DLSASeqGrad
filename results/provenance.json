@@ -1,0 +1,160 @@
+{
+  "source_studies": [
+    "experiment500_1bp_seed0_v1",
+    "experiment500_1bp_seed1_v1",
+    "experiment500_1bp_seed2_v1"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "architectures": [
+    "fourier",
+    "cnn"
+  ],
+  "arms": [
+    "signal_only",
+    "previous_epoch",
+    "current_detached",
+    "current_recurrent"
+  ],
+  "policies": [
+    "full_epoch100",
+    "initial_selected",
+    "rolling_epoch100",
+    "rolling_selected"
+  ],
+  "fits": 1488,
+  "checkpoints": 2976,
+  "daily_paths": 96,
+  "sessions_per_path": 3772,
+  "history_rows": 223200,
+  "epochs_per_fit": 100,
+  "exported_source_files": 7487,
+  "source_manifest": "source_manifest.json.gz",
+  "weights": "Exact original saved state_dict tensors and checkpoint epochs; no optimizer/runtime state",
+  "verification": "Original archive arrays checked byte-for-byte against loaded originals; checkpoint hashes matched original selections. No training, inference or replay executed. Publication Mean rows subsequently updated as described in report_aggregation.",
+  "historical_audits": "Three original CNN FP32 audit discrepancies are preserved in audit/; all strict accounting and recurrence checks passed.",
+  "exports": {
+    "data/provenance.json": {
+      "bytes": 6450,
+      "sha256": "6f3da238ea2710a2d651d15ce11513f0f50fc8ec8054cdf4491d5bdd3753d0f8"
+    },
+    "data/returns.npz": {
+      "bytes": 18594137,
+      "sha256": "580c1ed9eab90ffd483caf23eb31f6858610125539b9c7f9ef98d29be2761c24"
+    },
+    "data/splits.csv": {
+      "bytes": 4124,
+      "sha256": "201dee120666b68118d02736525b7e489ea813a0c179d1c36c19ef87b8a955c3"
+    },
+    "data/stocks.csv": {
+      "bytes": 178677,
+      "sha256": "588998722dbb64a89025fe21256244fd507c03848f83d42ea81a4e8ace3a89db"
+    },
+    "results/daily.npz": {
+      "bytes": 10751336,
+      "sha256": "c7cdd936cfab52b916c9a1e2046917b717eae8e29986551de2e17eecf73066b4"
+    },
+    "results/deployment_selections.csv": {
+      "bytes": 1023580,
+      "sha256": "1f1616a91e47e2b5ce80c6810e1c27fa76ef8f2b0264eeb28734c467d1fa0cef"
+    },
+    "results/fit_metadata.json.gz": {
+      "bytes": 248506,
+      "sha256": "5642dc9a80f9f32aad5342526ca82d72c7a947338c2f5c980bd37cd3eab7fe4c"
+    },
+    "results/history.npz": {
+      "bytes": 19095480,
+      "sha256": "0c60eb761192627d7fe6c772747d7327743ec4f3c36d74de35fe63e5878ee586"
+    },
+    "results/initial_selections.json": {
+      "bytes": 8333,
+      "sha256": "44773f7ee69b10073282ae6f33b17e963085a5502e900cfbf7c496f278d2d3fd"
+    },
+    "results/metrics.csv": {
+      "bytes": 33882,
+      "sha256": "08f8b5fa22589f23f4f455207526422c72c337e535f0b527c7d75213ad4e2190"
+    },
+    "results/README.md": {
+      "bytes": 4311,
+      "sha256": "c24ea4aa29ccfaa249ab66b47388c23969e231662d4600b62e2290d470b63a51"
+    },
+    "results/selections.csv": {
+      "bytes": 419165,
+      "sha256": "5c9b0d37f1bf259a0dd19126f340c1a252228d25ab869a7efb5565acee7b47eb"
+    },
+    "results/source_manifest.json.gz": {
+      "bytes": 336095,
+      "sha256": "f8abda9a648bafea90ba4800ae593705cc7bb20ab32c84bb3b3031a45a4c7662"
+    },
+    "results/audit/cnn_seed0.json": {
+      "bytes": 876,
+      "sha256": "2d616e72ea909e66d2417e38c0ce286502fb24f917afc3e225ca32f9fd0e2479"
+    },
+    "results/audit/cnn_seed1.json": {
+      "bytes": 6336,
+      "sha256": "ab1ef8c8f8fb3a1ca1b4ffe73c4232e7db245a2b4dc978aa0fe8e5548e6ed970"
+    },
+    "results/audit/cnn_seed2.json": {
+      "bytes": 3734,
+      "sha256": "7d62ac1d710dc8fd6753a8f4d4a1df6e3ec2ed55c8281aa6f0babc2c6fcfc1eb"
+    },
+    "results/audit/numerical_audit_failures.csv": {
+      "bytes": 768,
+      "sha256": "493c811de79c9dfec4e25b0960cbc2e293c2af9215147864e626ee82faa2300d"
+    },
+    "results/checkpoints/cnn_seed0.npz": {
+      "bytes": 1440741,
+      "sha256": "272a68931bd5579410728e7acd35e09241e4f48ae167c3079e93dd8d1125440f"
+    },
+    "results/checkpoints/cnn_seed1.npz": {
+      "bytes": 1441284,
+      "sha256": "21677345085a94d5ae91c364e308978d828dc1c51767178ad6d369b9d8b28817"
+    },
+    "results/checkpoints/cnn_seed2.npz": {
+      "bytes": 1444926,
+      "sha256": "69b2f4c51a0b171f570b99e5b677557e2c39a8a71294a2ac3f457bcf7c65efa1"
+    },
+    "results/checkpoints/fourier_seed0.npz": {
+      "bytes": 1262159,
+      "sha256": "eea37a49b869468f21ccad631b722a8e700ff915a6763b73f28e715f9525e7a0"
+    },
+    "results/checkpoints/fourier_seed1.npz": {
+      "bytes": 1173454,
+      "sha256": "fb4938d1f35f0c24f97e67d08cb7353a504e094b57b2487322998cb40bbb1c3d"
+    },
+    "results/checkpoints/fourier_seed2.npz": {
+      "bytes": 1271897,
+      "sha256": "0bcbe7ae277939a1be6eda6f41a85fdb362ff52d81b08de4e9d81d8769f09e49"
+    }
+  },
+  "report_aggregation": {
+    "mean_definition": "Arithmetic mean of each statistic calculated independently for seeds 0, 1, 2",
+    "curve_definition": "Pointwise arithmetic mean of three independently compounded wealth indices",
+    "mean_rows": 64,
+    "seed_rows_unchanged": 192,
+    "updated_fields": [
+      "cagr",
+      "max_drawdown"
+    ],
+    "already_arithmetic_mean": [
+      "sharpe",
+      "ending_index"
+    ],
+    "original_metrics_sha256": "0e24f9502dc66d1178e622f5ba97a6301562ecafb81a6e741fc75d8ff8e2fbcd",
+    "models_and_daily_returns_unchanged": true
+  },
+  "report_artifacts": {
+    "results.pdf": {
+      "bytes": 8406088,
+      "sha256": "878165ad7a7f47fe1464604bf0191860455ef59abec4227888c2234bfe821538"
+    },
+    "figures/headline.png": {
+      "bytes": 669750,
+      "sha256": "2fa652c1d107307de103753a25f4d63b5470bc5d0d6bbd37847bca00cfff786d"
+    }
+  },
+  "source_identifiers": "Normalized labels for source records; original content hashes and fit metadata retained. Labels are not literal filesystem paths."
+}
